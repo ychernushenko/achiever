@@ -7,6 +7,10 @@ app = Flask(__name__)
 def hello():
     return render_template('index.html')
 
+@app.route('/dashboard', methods=['POST', 'GET'])
+def dashboard():
+    return render_template('dashboard.html')
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
