@@ -6,14 +6,11 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
 def hello():
-    return render_template('index.html')
+    return render_template('new.html')
 
 @app.route('/dashboard', methods=['POST', 'GET'])
 def dashboard():
     return render_template('dashboard.html')
-@app.route('/boot', methods=['POST', 'GET'])
-def boot():
-    return render_template('new.html')
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
