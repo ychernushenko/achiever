@@ -6,10 +6,6 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
 def hello():
-    return render_template('new.html')
-
-@app.route('/dashboard', methods=['POST', 'GET'])
-def dashboard():
     return render_template('dashboard.html')
 
 if __name__ == "__main__":
