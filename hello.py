@@ -23,3 +23,7 @@ def hello():
         s = s + row[0] + ", " + row[1] + "<br/>"
     return s
 print hello()
+
+@app.route('/', methods=['POST', 'GET'])
+def index():
+    return render_template('index.html')
