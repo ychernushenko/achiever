@@ -1,5 +1,4 @@
 import os
-import psycopg2
 import urlparse
 from flask import Flask, render_template, send_from_directory
 
@@ -12,6 +11,9 @@ def hello():
 @app.route('/dashboard', methods=['POST', 'GET'])
 def dashboard():
     return render_template('dashboard.html')
+@app.route('/boot', methods=['POST', 'GET'])
+def boot():
+    return render_template('new.html')
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
