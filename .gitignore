@@ -1,4 +1,6 @@
 *.pyc
-venv
 *~
 .DS_Store
+/venv
+/.idea
+/virtualenv-1.10
