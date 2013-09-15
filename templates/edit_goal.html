@@ -30,9 +30,9 @@
                             document.getElementById("owner_id").value = response.id;
                             document.getElementById("uname").value = response.name;
                         });
-                    } else if (response.status === "not_authorized") {
+                        } else if (response.status === "not_authorized") {
                         FB.login();
-                    } else {
+                        } else {
                         FB.login();
                     }
                 });
@@ -40,96 +40,92 @@
 
 
 
-                (function(d, s, id){
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {return;}
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/all.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
 
-                function callback() {
-                    alert("yay");
-                }
+            function callback() {
+            }
         </script>
 
         <table class='table table-floating'>
             <tbody>
                 <tr height='3em' style='background-color: #eee'>
-                    <th colspan=4><h1 >Edit Goal</h1></th>
-                </tr>
-            </tbody>
-        </table>
+                    <th colspan=4><h1 >Edit Goal&nbsp;<span class="glyphicon glyphicon-cog"></span></hr></th>
+                    </tr>
+                </tbody>
+            </table>
 
-        <form class="form-horizontal" role="form" action="/create" method="POST" >
-            <input type="hidden" id="owner_id" name="owner_id" />
-            <input type="hidden" id="uname" name="uname" />
-            <div class="form-group">
-                <label class="col-lg-1 control-label">Goal Name</label>
-                <div class="col-lg-5">
-                    <input type="text" name="name" class="form-control" value="Move to Brazil" id="GoalName">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-lg-1 control-label">Details</label>
-                <div class="col-lg-5">
-                    <textarea name="details" class="form-control"  rows="3" id="Details">I am going to move to Sao Paolo with my family by the end of April, 2014.</textarea>
-                </div>
-            </div>  
-
-            <div class="form-group">
-                <label class="col-lg-1 control-label">When</label>
-
-                <div class="input-append date" id="dp3" data-date="30-04-2014" data-date-format="dd-mm-yyyy">
-                    <div class="input-append date col-lg-2" id="dp3" data-date="30-04-2014" data-date-format="dd-mm-yyyy">
-                        <input class="span2" name="date" size="16" type="text" value="30-04-2014" readonly><i class="icon-calendar"></i>
-                        <span class="add-on"><i class="icon-th"></i></span>
+            <form class="form-horizontal" role="form" action="/create" method="POST" >
+                <input type="hidden" id="owner_id" name="owner_id" />
+                <input type="hidden" id="uname" name="uname" />
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">Goal Name</label>
+                    <div class="col-lg-5">
+                        <input type="text" name="name" class="form-control" value="Move to Brazil" id="GoalName">
                     </div>
                 </div>
-            </div>
 
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">Details</label>
+                    <div class="col-lg-5">
+                        <textarea name="details" class="form-control"  rows="3" id="Details">I am going to move to Sao Paolo with my family by the end of April, 2014.</textarea>
+                    </div>
+                </div>  
 
-            <div class="form-group">
-                <label class="col-lg-1 control-label">Privacy</label>
-                <div class="col-lg-2">
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-star"></span> Star
-</button>
-                    <select class="form-control" id="privacy" name="privacy" value="Public">
-                        <option>Me</option>
-                        <option>Friends</option>
-                        <option>Public</option>
-                    </select>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">When</label>
+
+                    <div class="input-append date" id="dp3" data-date="30-04-2014" data-date-format="dd-mm-yyyy">
+                        <div class="input-append date col-lg-2" id="dp3" data-date="30-04-2014" data-date-format="dd-mm-yyyy">
+                            <input class="span2" name="date" size="16" type="text" value="30-04-2014" readonly><span class="glyphicon glyphicon-calendar"></span>
+                            <span class="add-on"></span>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <table class='table table-floating'>
-                    <tbody>
-                        <tr height='3em' style='background-color: #eee'>
-                            <td>
-                                <div class="col-lg-offset-5 col-lg-4">
-                                    <a onclick="FB.ui({method: 'apprequests', message: 'My Great Request'}, callback);"><label class="control-label">Invite Followers</label></a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col-lg-offset-1 col-lg-4">
-                                    <button type="submit" class="btn btn-success" >Save</button>
-                                    <button type="cancel" class="btn btn-default" >Cancel</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </form>
 
-        <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
-        <script src='static/js/bootstrap.min.js'></script>
-        <script src="../static/js/bootstrap-datepicker.js"></script>
-        <script>
-            $("#dp3").datepicker();
-        </script>
-    </body>
-</html>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">Privacy</label>
+                    <div class="col-lg-2">
+                        <select class="form-control" id="privacy" name="privacy" value="Public">
+                            <option>Me</option>
+                            <option>Friends</option>
+                            <option>Public</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <table class='table table-floating'>
+                        <tbody>
+                            <tr height='3em' style='background-color: #eee'>
+                                <td>
+                                    <div class="col-lg-offset-5 col-lg-4">
+                                        <a onclick="FB.ui({method: 'apprequests', message: 'My Great Request'}, callback);"><label class="control-label">Invite Followers</label></a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-lg-offset-1 col-lg-4">
+                                        <a href="dashboard2.html"><button type="button" class="btn btn-success" >Save</button></a>
+                                        <button type="cancel" class="btn btn-default" >Cancel</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+
+            <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+            <script src='static/js/bootstrap.min.js'></script>
+            <script src="../static/js/bootstrap-datepicker.js"></script>
+            <script>
+                $("#dp3").datepicker();
+            </script>
+        </body>
+    </html>
