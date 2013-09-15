@@ -24,14 +24,45 @@ def getGoals():
         print type(record)
     return cursor
 
+
 def getGoalsForOwner(ownerId):
     conn = psycopg2.connect(database=url.path[1:], user=url.username,
                             password=url.password,
                             host=url.hostname,
                             port=url.port)
-    cursor = conn.execute("SELECT * from goals WHERE owner_id=%s", ownerId)
+    cursor = conn.execute("SELECT (name, details, status) from goals WHERE owner_id=%s", ownerId)
     return cursor
 
-def getHtmlForOwner(ownerId):
-    cursor = getGoalsForOwner(ownerId)
+
+def getHtmlForGoals(ownerId):
+    cursor = getGoalsForOwner("XiaoTeXhu")
+    f = open("templates/data_replace.html")
+    s = ""
+    for line in f:
+        s += line
+    counter = 0
     for record in cursor:
+        x, y, z = record
+        s += f % ("mCheck" + str(counter), y, x, z, "mButton" + str(counter))
+        counter += 1
+    return s
+
+
+def getFollowersHtml(ownerId):
+    return ""
+
+
+def getRequestsHtml(ownerId):
+    return ""
+
+
+def getHtml(ownerId):
+    r = getHtmlForGoals(ownerId)
+    s = getFollowersHtml(ownerId)
+    t = getRequestsHtml(ownerId)
+    f = open("templates/data_replace.html")
+    html = ""
+    for line in f:
+        html += line
+    return html % (r, s, t)
+
