@@ -3,12 +3,17 @@ import urlparse
 from flask import Flask, render_template, send_from_directory
 from goals import goal
 from login import login
+from db_connect import insert
 
 app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
 def main():
     return login()
+
+@app.route('/create', methods=['POST', 'GET'])
+def create():
+    return 0
 
 @app.route('/<path:filename>.html', methods=['POST', 'GET'])
 def channel(filename):

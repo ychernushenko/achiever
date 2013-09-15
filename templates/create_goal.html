@@ -14,6 +14,29 @@
         <![endif]-->
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId       : '437563489689617',
+                    channelURL  : 'http://evening-inlet-5471.herokuapp.com/channel.html',
+                    status      : true,
+                    xfbml       : true,
+                }); 
+
+                FB.api('/me', function(response) {
+                    document.getElementById("owner_id").value = response.id;
+                });
+
+                (function(d, s, id){
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/all.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+        </script>
+
         <table class='table table-floating'>
             <tbody>
                 <tr height='3em' style='background-color: #eee'>
@@ -23,6 +46,7 @@
         </table>
 
         <form class="form-horizontal" role="form" action="/create" method="GET" >
+            <input type="hidden" id="owner_id" name="owner_id" />
             <div class="form-group">
                 <label class="col-lg-1 control-label">Goal Name</label>
                 <div class="col-lg-5">
@@ -40,8 +64,8 @@
             <div class="form-group">
                 <label class="col-lg-1 control-label">When</label>
 
-                <div class="input-append date" name="date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                    <div class="input-append date col-lg-2" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                <div class="input-append date" name="date" id="dp3" data-date="15-09-2013" data-date-format="dd-mm-yyyy">
+                    <div class="input-append date col-lg-2" id="dp3" data-date="15-09-2013" data-date-format="dd-mm-yyyy">
                         <input class="span2" size="16" type="text" value="12-02-2012" readonly><i class="icon-calendar"></i>
                         <span class="add-on"><i class="icon-th"></i></span>
                     </div>
