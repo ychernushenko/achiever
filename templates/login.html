@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Login</title>
-    <meta name="viewport" content="width=760px, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
 
@@ -13,17 +13,27 @@
     <![endif]-->
 </head>
 <body>
-    <div id="fb-root"></div>
     <script>
         window.fbAsyncInit = function() {
-            FB.init((
+            FB.init({
                 appId       : '437563489689617',
                 channelURL  : 'http://evening-inlet-5471.herokuapp.com/channel.html',
                 status      : true,
                 xfbml       : true,
-                ));
+                });
 
-            };
+
+            FB.Event.subscribe('auth.authResponseChange', function(response) {
+                if (response.status === 'connected') {
+                    testAPI(); //this does things
+                } else if (response.status === 'not_authorized') {
+                    FB.login();
+                } else {
+                    FB.login();
+                }
+            });
+        };
+        
 
         (function(d, s, id){
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -32,14 +42,28 @@
             js.src = "//connect.facebook.net/en_US/all.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+
+        function testAPI() {
+            document.getElementByID('log').innerHTML = "Hello, ";
+            FB.api('/me', function(response) {
+                document.getElementById('log').innerHTML = "Hello, " + response.name+"." +
+                                                            "your id is " + response.id;
+            });
+        }
     </script>
 <table class="table table-floating">
-    <tbody>
+    <thead>
         <tr style="background-color: #eee">
-            <th colspan=4><h1>Login</h1></th>
+            <th colspan=2><h1>Login</h1></th>
         </tr>
+    </thead>
+    <tbody>
+        <tr><td colspan="2"><h3>Welcome to Achiever<h2></td></tr>
         <tr>
-
+            <td>Please login using Facebook to continue to the site</td>
+            <td> <div id="fb-root"></div>
+                <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button> 
+            </td>
         </tr>
     </tbody>
 </table>
