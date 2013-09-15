@@ -1,78 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
+    <head>
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId       : '437563489689617',
-                channelURL  : 'http://evening-inlet-5471.herokuapp.com/channel.html',
-                status      : true,
-                xfbml       : true,
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="../../assets/js/html5shiv.js"></script>
+        <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId       : '437563489689617',
+                    channelURL  : 'http://evening-inlet-5471.herokuapp.com/channel.html',
+                    status      : true,
+                    xfbml       : true,
                 });
 
 
-            FB.Event.subscribe('auth.authResponseChange', function(response) {
-                if (response.status === 'connected') {
-                    testAPI(); //this does things
-                } else if (response.status === 'not_authorized') {
-                    FB.login();
-                } else {
-                    FB.login();
-                }
-            });
-        };
-        
+                FB.Event.subscribe('auth.authResponseChange', function(response) {
+                    if (response.status === 'connected') {
+                        testAPI(); //this does things
+                        } else if (response.status === 'not_authorized') {
+                        FB.login();
+                        } else {
+                        FB.login();
+                    }
+                });
+            };
 
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
 
-        function testAPI() {
-            FB.api('/me', function(response) {
-                window.location = '/'+response.id
-                document.getElementById('log').innerHTML = "Hello, " + response.name+"." +
-                                                            "your id is " + response.id;
-            });
-        }
-    </script>
-<table class="table table-floating">
-    <thead>
-        <tr style="background-color: #eee">
-            <th colspan=3><h1>Login</h1></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr><td colspan="3"><h3>Welcome to Achiever<h2></td></tr>
-        <tr>
-            <td>Please login using Facebook to continue to the site</td>
-            <td> <div id="fb-root"></div>
-                <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button> 
-            </td>
-            <td><div id="log"></div>
-        </tr>
-    </tbody>
-</table>
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//code.jquery.com/jquery.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../static/js/bootstrap.min.js"></script>
-</body>
-</html>
+            function testAPI() {
+                FB.api('/me', function(response) {
+                    window.location = '/'+response.id
+                });
+            }
+        </script>
+        <table class="table table-floating">
+            <thead>
+                <tr style="background-color: #eee">
+                    <th colspan=2><h1>Login</h1></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan=2><h3>Welcome to Achiever<h2></td></tr>
+                        <tr>
+                            <td>Please login using Facebook to continue to the site</td>
+                            <td> <div id="fb-root"></div>
+                                <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                <script src="//code.jquery.com/jquery.js"></script>
+                <!-- Include all compiled plugins (below), or include individual files as needed -->
+                <script src="../static/js/bootstrap.min.js"></script>
+            </body>
+        </html>
 
