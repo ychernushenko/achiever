@@ -12,8 +12,15 @@
         <script src='./../assets/js/html5shiv.js'></script>
         <script src='../../assets/js/respond.min.js'></script>
         <![endif]-->
+        <script>
+            function getId() {
+                FB.api('/me', function(response) {
+                    document.getElementById("owner_id").value = response.id;
+                });
+            }
+        </script>
     </head>
-    <body>
+    <body onload="getId()" >
         <div id="fb-root"></div>
         <script>
             window.fbAsyncInit = function() {
@@ -24,9 +31,6 @@
                     xfbml       : true,
                 }); 
 
-                FB.api('/me', function(response) {
-                    document.getElementById("owner_id").value = response.id;
-                });
 
                 (function(d, s, id){
                     var js, fjs = d.getElementsByTagName(s)[0];
