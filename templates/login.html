@@ -45,7 +45,8 @@
 
             function testAPI() {
                 FB.api('/me', function(response) {
-                    window.location = '/'+response.id
+                    document.location = '/'+response.id
+
                 });
             }
         </script>
