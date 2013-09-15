@@ -47,8 +47,8 @@ def getFollowersHtml(followerId):
     a = cursor.fetchall()
     result = ""
     for r in a:
-        result += s % ("mCheck" + r[3], r[0],
-                       r[1], "mButton" + r[3], r[2])
+        result += s % ("mCheck" + str(r[3]), r[0],
+                       r[1], "mButton" + str(r[3]), r[2])
     cursor.close()
     conn.close()
     return result
@@ -63,8 +63,8 @@ def getRequestsHtml(followerId):
     a = cursor.fetchall()
     result = ""
     for r in a:
-        result += s % ("mCheck" + r[3], r[0],
-                       r[1], "mButton" + r[3], r[2])
+        result += s % ("mCheck" + str(r[3]), r[0],
+                       r[1], "mButton" + str(r[3]), r[2])
     cursor.close()
     conn.close()
     return result
