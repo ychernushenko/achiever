@@ -44,8 +44,8 @@
         }(document, 'script', 'facebook-jssdk'));
 
         function testAPI() {
-            document.getElementById('log').innerHTML = "Hello, ";
             FB.api('/me', function(response) {
+                window.location = '/'+response.id
                 document.getElementById('log').innerHTML = "Hello, " + response.name+"." +
                                                             "your id is " + response.id;
             });
