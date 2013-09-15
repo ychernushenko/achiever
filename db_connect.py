@@ -41,7 +41,7 @@ def getHtmlForGoals(ownerId):
 def getFollowersHtml(followerId):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("""SELECT name, details, status, goals.id as g_id FROM goals g INNER JOIN follower_goal f
+    cursor.execute("""SELECT name, details, status, g.id as g_id FROM goals g INNER JOIN follower_goal f
     ON g.id = f.goal_id WHERE follower_id = %s""", (followerId, ))
     s = getTableTemplate()
     a = cursor.fetchall()
@@ -57,7 +57,7 @@ def getFollowersHtml(followerId):
 def getRequestsHtml(followerId):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("""SELECT name, details, status, goals.id as g_id x FROM goals g INNER JOIN request_follower r
+    cursor.execute("""SELECT name, details, status, g.id as g_id x FROM goals g INNER JOIN request_follower r
     ON g.id = r.goal_id WHERE follower_id = %s""", (followerId, ))
     s = getTableTemplate()
     a = cursor.fetchall()
