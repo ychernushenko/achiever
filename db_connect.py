@@ -116,6 +116,6 @@ def insert(name, details, dueDate, binary, privacy, reminder_date,
     cm = t.tm_mon
     cd = t.tm_mday
     cursor = conn.cursor()
-    cursor.execute("""INSERT INTO goals (name, details, due_date, picture, privacy, reminder_date, reminder_period, creation_date, status, owner_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (name, details, datetime.datetime(ty, tm, td), psycopg2.Binary(binary), privacy, datetime.datetime(uy, um, ud), reminder_period, datetime.datetime(cy,cm,cd), status, owner_id))
+    cursor.execute("""INSERT INTO goals (name, details, due_date, picture, privacy, reminder_date, reminder_period, creation_date, status, owner_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (name, details, datetime.datetime(ty, tm, td), psycopg2.Binary(binary), privacy, datetime.datetime(uy, um, ud), reminder_period, datetime.datetime(cy,cm,cd), status, owner_id))
     cursor.close()
     conn.close()
