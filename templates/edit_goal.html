@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Create Goal</title>
+        <title>Edit Goal</title>
         <meta name='viewport' content='initial-scale=1.0'>
         <link href='../static/css/bootstrap.css' rel="stylesheet" media='screen'>
 
@@ -56,7 +56,7 @@
         <table class='table table-floating'>
             <tbody>
                 <tr height='3em' style='background-color: #eee'>
-                    <th colspan=4><h1 >Create Goal</h1></th>
+                    <th colspan=4><h1 >Edit Goal</h1></th>
                 </tr>
             </tbody>
         </table>
@@ -67,23 +67,23 @@
             <div class="form-group">
                 <label class="col-lg-1 control-label">Goal Name</label>
                 <div class="col-lg-5">
-                    <input type="text" name="name" class="form-control" placeholder="Put your goal name here" id="GoalName">
+                    <input type="text" name="name" class="form-control" value="Move to Brazil" id="GoalName">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-lg-1 control-label">Details</label>
                 <div class="col-lg-5">
-                    <textarea name="details" class="form-control" placeholder="Write details about your goal here" rows="3" id="Details"></textarea>
+                    <textarea name="details" class="form-control"  rows="3" id="Details">I am going to move to Sao Paolo with my family by the end of April, 2014.</textarea>
                 </div>
             </div>  
 
             <div class="form-group">
                 <label class="col-lg-1 control-label">When</label>
 
-                <div class="input-append date" id="dp3" data-date="15-09-2013" data-date-format="dd-mm-yyyy">
-                    <div class="input-append date col-lg-2" id="dp3" data-date="15-09-2013" data-date-format="dd-mm-yyyy">
-                        <input class="span2" name="date" size="16" type="text" value="12-02-2012" readonly><i class="icon-calendar"></i>
+                <div class="input-append date" id="dp3" data-date="30-04-2014" data-date-format="dd-mm-yyyy">
+                    <div class="input-append date col-lg-2" id="dp3" data-date="30-04-2014" data-date-format="dd-mm-yyyy">
+                        <input class="span2" name="date" size="16" type="text" value="30-04-2014" readonly><i class="icon-calendar"></i>
                         <span class="add-on"><i class="icon-th"></i></span>
                     </div>
                 </div>
@@ -93,7 +93,10 @@
             <div class="form-group">
                 <label class="col-lg-1 control-label">Privacy</label>
                 <div class="col-lg-2">
-                    <select class="form-control" id="privacy" name="privacy">
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star"></span> Star
+</button>
+                    <select class="form-control" id="privacy" name="privacy" value="Public">
                         <option>Me</option>
                         <option>Friends</option>
                         <option>Public</option>
@@ -112,7 +115,7 @@
                             </td>
                             <td>
                                 <div class="col-lg-offset-1 col-lg-4">
-                                    <button type="submit" class="btn btn-success" >Create</button>
+                                    <button type="submit" class="btn btn-success" >Save</button>
                                     <button type="cancel" class="btn btn-default" >Cancel</button>
                                 </div>
                             </td>
