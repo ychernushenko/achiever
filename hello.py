@@ -1,6 +1,6 @@
 import os
 import urlparse
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request
 from goals import goal
 from login import login
 from db_connect import insert
@@ -13,7 +13,19 @@ def main():
 
 @app.route('/create', methods=['POST', 'GET'])
 def create():
-    return 0
+    owner_id = request.form['owner_id']
+    uname = request.form['uname']
+    details = request.form['details']
+    binary=""
+    privacy=""
+    reminder_date = ""
+    dueDate = request.form['date']
+    reminder_period = ""
+    status = "IN PROGRESS"
+
+    insert(uname, details, dueDate, binary, privacy, reminder_date, reminder_period, status, owner_id)
+    return goal(owner_id)
+
 
 @app.route('/<path:filename>.html', methods=['POST', 'GET'])
 def channel(filename):
