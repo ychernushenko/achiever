@@ -1,4 +1,4 @@
 import db_connect
-def goal():
-    out = db_connect.getHtml("XiaoTeZhu")
+def goal(userid):
+    out = db_connect.getHtml(userid)
     return out
