@@ -6,9 +6,6 @@ from flask import Flask
 
 app = Flask(__name__)
 
-urlparse.uses_netloc.append("postgres")
-url = urlparse.urlparse(os.environ["DATABASE_URL"])
-
 def getGoalsForOwner(ownerId):
     conn = psycopg2.connect(database="ddg1e2pn2rcqt6", user="xazmiyanlmjvcz",
                             password="7e7AgvwcRuoqWszdsTMxYb4edZ",
