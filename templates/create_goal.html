@@ -12,15 +12,8 @@
         <script src='./../assets/js/html5shiv.js'></script>
         <script src='../../assets/js/respond.min.js'></script>
         <![endif]-->
-        <script>
-            function getId() {
-                FB.api('/me', function(response) {
-                    document.getElementById("owner_id").value = response.id;
-                });
-            }
-        </script>
     </head>
-    <body onload="getId()" >
+    <body >
         <div id="fb-root"></div>
         <script>
             window.fbAsyncInit = function() {
@@ -30,6 +23,20 @@
                     status      : true,
                     xfbml       : true,
                 }); 
+
+                FB.Event.subscribe('auth.authResponseChange', function(response) {
+                    if (response.status === 'connected') {
+                        FB.api('/me', function(response) {
+                            document.getElementById("owner_id").value = response.id;
+                        });
+                    } else if (response.status === "not_authorized") {
+                        FB.login();
+                    } else {
+                        FB.login();
+                    }
+                });
+            };
+
 
 
                 (function(d, s, id){
