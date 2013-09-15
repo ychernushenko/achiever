@@ -31,8 +31,8 @@ def getHtmlForGoals(ownerId):
     s = getTableTemplate()
     result = ""
     for r in a:
-        result += s % ("mCheck" + r[3], r[0],
-                       r[1], "mButton" + r[3], r[2])
+        result += s % ("mCheck" + str(r[3]), r[0],
+                       r[1], "mButton" + str(r[3]), r[2])
     cursor.close()
     conn.close()
     return result
@@ -41,7 +41,7 @@ def getHtmlForGoals(ownerId):
 def getFollowersHtml(followerId):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("""SELECT name, details, status, id FROM goals g INNER JOIN follower_goal f
+    cursor.execute("""SELECT name, details, status, goals.id as g_id FROM goals g INNER JOIN follower_goal f
     ON g.id = f.goal_id WHERE follower_id = %s""", (followerId, ))
     s = getTableTemplate()
     a = cursor.fetchall()
@@ -57,7 +57,7 @@ def getFollowersHtml(followerId):
 def getRequestsHtml(followerId):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("""SELECT name, details, status, id FROM goals g INNER JOIN request_follower r
+    cursor.execute("""SELECT name, details, status, goals.id as g_id x FROM goals g INNER JOIN request_follower r
     ON g.id = r.goal_id WHERE follower_id = %s""", (followerId, ))
     s = getTableTemplate()
     a = cursor.fetchall()
