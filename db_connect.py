@@ -26,7 +26,7 @@ def getTableTemplate():
 def getHtmlForGoals(ownerId):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT name, details, status, id from goals WHERE owner_id = %s", (ownerId, ))
+    cursor.execute("SELECT u_name, details, status, id from goals WHERE owner_id = %s", (ownerId, ))
     a = cursor.fetchall()
     s = getTableTemplate()
     result = ""
@@ -41,7 +41,7 @@ def getHtmlForGoals(ownerId):
 def getFollowersHtml(followerId):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("""SELECT name, details, status, g.id as g_id FROM goals g INNER JOIN follower_goal f
+    cursor.execute("""SELECT u_name, details, status, g.id as g_id FROM goals g INNER JOIN follower_goal f
     ON g.id = f.goal_id WHERE follower_id = %s""", (followerId, ))
     s = getTableTemplate()
     a = cursor.fetchall()
@@ -57,7 +57,7 @@ def getFollowersHtml(followerId):
 def getRequestsHtml(followerId):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("""SELECT name, details, status, g.id as g_id FROM goals g INNER JOIN request_follower r
+    cursor.execute("""SELECT u_name, details, status, g.id as g_id FROM goals g INNER JOIN request_follower r
     ON g.id = r.goal_id WHERE follower_id = %s""", (followerId, ))
     s = getTableTemplate()
     a = cursor.fetchall()
@@ -116,6 +116,7 @@ def insert(name, details, dueDate, binary, privacy, reminder_date,
     cm = t.tm_mon
     cd = t.tm_mday
     cursor = conn.cursor()
-    cursor.execute("""INSERT INTO goals (name, details, due_date, picture, privacy, reminder_date, reminder_period, creation_date, status, owner_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (name, details, datetime.datetime(ty, tm, td), psycopg2.Binary(binary), privacy, datetime.datetime(uy, um, ud), reminder_period, datetime.datetime(cy,cm,cd), status, owner_id))
+    cursor.execute("""INSERT INTO goals (u_name, details, due_date, picture, privacy, reminder_date, reminder_period, creation_date, status, owner_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                   (name, details, datetime.datetime(ty, tm, td), psycopg2.Binary(binary), privacy, datetime.datetime(uy, um, ud), reminder_period, datetime.datetime(cy,cm,cd), status, owner_id))
     cursor.close()
     conn.close()
