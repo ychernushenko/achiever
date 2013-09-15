@@ -12,22 +12,25 @@ def getGoalsForOwner(ownerId):
                             host="ec2-54-225-68-241.compute-1.amazonaws.com",
                             port="5432")
     cursor = conn.cursor()
-    cursor.execute("SELECT (name, details, status) from goals WHERE owner_id=%s", ownerId)
+    cursor.execute("SELECT name, details, status from goals WHERE owner_id = %s", (ownerId, ))
+    print cursor.rowcount
     return cursor
 
 
 def getHtmlForGoals(ownerId):
     cursor = getGoalsForOwner(ownerId)
+    a = cursor.fetchall()
     f = open("templates/data_replace.html")
     s = ""
     for line in f:
         s += line
     counter = 0
-    for record in cursor:
-        x, y, z = record
-        s += f % ("mCheck" + str(counter), y, x, z, "mButton" + str(counter))
+    result = ""
+    for r in a:
+        result += s % ("mCheck" + str(counter), r[0], 
+                      r[1], "mButton" + str(counter), r[2])
         counter += 1
-    return s
+    return result
 
 
 def getFollowersHtml(ownerId):
