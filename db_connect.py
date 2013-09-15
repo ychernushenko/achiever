@@ -11,7 +11,8 @@ def getGoalsForOwner(ownerId):
                             password="7e7AgvwcRuoqWszdsTMxYb4edZ",
                             host="ec2-54-225-68-241.compute-1.amazonaws.com",
                             port="5432")
-    cursor = conn.execute("SELECT (name, details, status) from goals WHERE owner_id=%s", ownerId)
+    cursor = conn.cursor()
+    cursor.execute("SELECT (name, details, status) from goals WHERE owner_id=%s", ownerId)
     return cursor
 
 
