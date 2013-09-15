@@ -101,20 +101,21 @@ def getHtml(ownerId):
 
 
 def insert(name, details, dueDate, binary, privacy, reminder_date,
-           reminder_period, status, owner_id):
+           reminder_period, creation_date, status, owner_id):
     conn = connect()
-    t = time.strptime(dueDate, "%d-%m-%Y")
-    u = time.strptime(reminder_date, "%d-%m-%Y")
+    t = time.strptime(str(dueDate), "%d-%m-%Y")
+    u = time.strptime(str(reminder_date), "%d-%m-%Y")
+    c = time.strptime(str(creation_date), "%d-%m-%Y")
     ty = t.tm_year
     tm = t.tm_mon
     td = t.tm_mday
     uy = u.tm_year
     um = u.tm_mon
     ud = u.tm_mday
+    cy = c.tm_year
+    cm = t.tm_mon
+    cd = t.tm_mday
     cursor = conn.cursor()
-    cursor.execute("""INSERT INTO goals (name, details, due_date, picture, privacy, reminder_date, reminder_period,
-    creation_date, status, owner_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
-                   (name, details, datetime.datetime(ty, tm, td), psycopg2.BINARY(binary), privacy,
-                    datetime.datetime(uy, um, ud), reminder_period, status, owner_id))
+    cursor.execute("""INSERT INTO goals (name, details, due_date, picture, privacy, reminder_date, reminder_period, creation_date, status, owner_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (name, details, datetime.datetime(ty, tm, td), psycopg2.Binary(binary), privacy, datetime.datetime(uy, um, ud), reminder_period, datetime.datetime(cy,cm,cd), status, owner_id))
     cursor.close()
     conn.close()

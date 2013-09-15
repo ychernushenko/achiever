@@ -18,12 +18,14 @@ def create():
     details = request.form['details']
     binary=""
     privacy=""
-    reminder_date = ""
+    reminder_date = "01-01-2001"
+    creation_date = "15-09-2013"
+    print request.form['date']
     dueDate = request.form['date']
     reminder_period = ""
     status = "IN PROGRESS"
 
-    insert(uname, details, dueDate, binary, privacy, reminder_date, reminder_period, status, owner_id)
+    insert(uname, details, dueDate, binary, privacy, reminder_date, reminder_period, creation_date, status, owner_id)
     return goal(owner_id)
 
 
