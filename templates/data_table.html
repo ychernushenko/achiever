@@ -14,27 +14,95 @@
 </head>
 <body>
 <table class="table table-floating">
-    <thead>
-    <tr style="background-color: #eee">
+    <tbody>
+    <tr height="3em" style="background-color: #eee">
         <th colspan=4><h1>Dashboard</h1></th>
     </tr>
-    </thead>
-    <tbody>
-        <tr><td><a href="create_goal.html"><h2>+ <span style="font-sze:14pt;">create goal</span></h2></a></td></tr>
-    <tr>
-        <th colspan=4>Mine</th>
+    <tr height="1em" style="background-color: #808080">
+        <th colspan=4>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="create_goal.html">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a href="edit_goal.html">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </a>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </div>
+            </div>
+
+
+        </th>
     </tr>
-    %s
-    <tr>
-        <th colspan=4>Following</th>
+    <tr style="background-color: #7C76B8">
+        <th colspan=4 style="color:white">Mine</th>
     </tr>
-    %s
-    <tr>
-        <th colspan=4>Requests</th>
+
+   %s%s%s
+
+    <tr style="background-color: #7C76B8">
+        <th colspan=4 style="color:white">Following</th>
     </tr>
-    %s
-</tbody>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td><a href="read_goal.html">Move to Brazil</a></td>
+        <td>Does Schmitt</td>
+        <td>
+            <button type="button" class="btn btn-warning">In Progress
+        </td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td><a href="read_goal.html">Get a new job</a></td>
+        <td>Jane Broslavsky</td>
+        <td>
+            <button type="button" class="btn btn-danger">Overdue
+        </td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td><a href="read_goal.html">Fly to Space<a></td>
+        <td>Yury Gagarin</td>
+        <td>
+            <button type="button" class="btn btn-success">Done
+        </td>
+    </tr>
+    <tr style="background-color: #7C76B8">
+        <th colspan=4 style="color:white">Request</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td><a href="read_goal.html">Become a President of USA</a></td>
+        <td>Mario Vitoriano</td>
+        <td>
+            <button type="button" class="btn btn-primary">Follow</button>
+            &nbsp;&nbsp;
+            <button class="btn btn-danger">Hide</button>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;</td>
+        <td>&nbsp;&nbsp;</td>
+        <td>&nbsp;&nbsp;</td>
+        <td>&nbsp;&nbsp;</td>
+    </tr>
+    </tbody>
 </table>
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="//code.jquery.com/jquery.js"></script>
