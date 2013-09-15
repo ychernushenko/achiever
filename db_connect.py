@@ -35,7 +35,7 @@ def getGoalsForOwner(ownerId):
 
 
 def getHtmlForGoals(ownerId):
-    cursor = getGoalsForOwner("XiaoTeXhu")
+    cursor = getGoalsForOwner(ownerId)
     f = open("templates/data_replace.html")
     s = ""
     for line in f:
@@ -60,7 +60,7 @@ def getHtml(ownerId):
     r = getHtmlForGoals(ownerId)
     s = getFollowersHtml(ownerId)
     t = getRequestsHtml(ownerId)
-    f = open("templates/data_replace.html")
+    f = open("templates/data_table.html")
     html = ""
     for line in f:
         html += line
