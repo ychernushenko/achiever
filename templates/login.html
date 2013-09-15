@@ -44,9 +44,9 @@
         }(document, 'script', 'facebook-jssdk'));
 
         function testAPI() {
-            document.getElementsByID('log')[0].innerHTML = "Hello, ";
+            document.getElementById('log').innerHTML = "Hello, ";
             FB.api('/me', function(response) {
-                document.getElementsById('log')[0].innerHTML = "Hello, " + response.name+"." +
+                document.getElementById('log').innerHTML = "Hello, " + response.name+"." +
                                                             "your id is " + response.id;
             });
         }
