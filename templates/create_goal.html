@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<meta name='viewport' content='width=760px, initial-scale=1.0'>
+<link href='../static/css/bootstrap.css' rel="stylesheet" media='screen'>
+
+<link href='css/datepicker.css' rel="stylesheet" media='screen'>
+
+<link href='../static/css/bootstrap.css' rel="stylesheet" media='screen'>
+<link href='css/datepicker.css' rel="stylesheet" media='screen'>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src='./../assets/js/html5shiv.js'></script>
+<script src='../../assets/js/respond.min.js'></script>
+<![endif]-->
+
+</head>
+<body>
+<table class='table table-floating'>
+		<tbody>
+			<tr height='3em' style='background-color: #eee'>
+				<th colspan=4><h1 >Create Goal</h1></th>
+			</tr>
+		</tbody>
+</table>
+
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Goal Name</label>
+    <div class="col-lg-5">
+		<input type="text" class="form-control" placeholder="Put your goal name here" id="GoalName">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Details</label>
+    <div class="col-lg-5">
+		<textarea class="form-control" placeholder="Write details about your goal here" rows="3" id="Details"></textarea>
+	   </div>
+  </div>  
+
+  <div class="form-group">
+    <label class="col-lg-1 control-label">When</label>
+	
+	<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+		<div class="input-append date col-lg-2" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+			<input class="span2" size="16" type="text" value="12-02-2012" readonly><i class="icon-calendar"></i>
+			<span class="add-on"><i class="icon-th"></i></span>
+		</div>
+	</div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Visualize</label>
+    <div class="col-lg-5">
+    	<input type="file" id="ImageFile">
+	</div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Privacy</label>
+    <div class="col-lg-2">
+		<select class="form-control" id="privacy">
+		  <option>Me</option>
+		  <option>Friends</option>
+		  <option>Public</option>
+		</select>
+	</div>
+  </div>
+
+  <div class="form-group">
+		<table class='table table-floating'>
+				<tbody>
+					<tr height='3em' style='background-color: #eee'>
+						<td style="width:420px">
+						    <div class="col-lg-offset-5 col-lg-4">
+								<label class="control-label">Invite followers</label>
+					    	</div>
+						</td>
+						<td>
+						    <div class="col-lg-offset-1 col-lg-4">
+				        		<button type="submit" class="btn btn-success">Create</button>
+				        		<button type="cancel" class="btn btn-default">Cancel</button>
+					    	</div>
+						</td>
+					</tr>
+				</tbody>
+		</table>
+  </div>
+</form>
+ 
+<script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script src='static/js/bootstrap.min.js'></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script>
+  $("#dp3").datepicker();
+</script>
+</body>
+</html>
